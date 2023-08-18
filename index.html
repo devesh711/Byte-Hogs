@@ -38,18 +38,33 @@
       <div class="mainbody">
         <div class="loginbox">
           <div class="logintop">
-            <h1>Welcome To Safest Path</h1>
+            <h1>Welcome To SAFEST PATH</h1>
             <p>Add in your Start and End Location</p>
           </div>
           <div class="loginbottom">
             <form>
               <label for="from">From</label>
               <input type="text" id="from" />
+              <select name="Values" id="selectfrom" onchange="changeFrom()">
+                <option class="val" id="adddata" value="fromdata">
+                  Choose a Value
+                </option>
+              </select>
               <label for="to">Destination</label>
               <input type="text" id="to" />
+              <select name="Values" id="selectto" onchange="changeTo()">
+                <option class="val" id="adddata" value="todata">
+                  Choose a Value
+                </option>
+              </select>
             </form>
-            <button onclick="newfun()" class="search">Search</button>
+            <button onclick="newfun();displayprompt()" class="search">
+              Search
+            </button>
           </div>
+        </div>
+        <div class="prompt">
+          <h1 id="result"></h1>
         </div>
       </div>
       <div class="footer">

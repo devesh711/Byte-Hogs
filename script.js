@@ -1058,6 +1058,8 @@ const c = [
 var f = 0;
 var e = 0;
 var g = 0;
+var a = "";
+var res;
 function newfun() {
   var a = document.getElementById("from").value;
   var b = document.getElementById("to").value;
@@ -1077,6 +1079,7 @@ function newfun() {
             "&travelmode=driving&waypoints=" +
             c[i][2];
           window.open(d, "_blank");
+          res = "We have a Safe Path for You";
           f = 1;
         } else {
           const d =
@@ -1086,7 +1089,7 @@ function newfun() {
             b +
             "&travelmode=walking&waypoints=" +
             c[i][2];
-
+          res = "We have a Safe Path for You";
           window.open(d, "_blank");
           f = 1;
         }
@@ -1100,6 +1103,7 @@ function newfun() {
             "&travelmode=driving&waypoints=" +
             c[i][3];
           window.open(d, "_blank");
+          res = "You Opted For Unsafe Path";
         } else {
           const d =
             "https://www.google.com/maps/dir/?api=1&origin=" +
@@ -1109,6 +1113,7 @@ function newfun() {
             "&travelmode=walking&waypoints=" +
             c[i][3];
           window.open(d, "_blank");
+          res = "You Opted For Unsafe Path";
         }
       }
     }
@@ -1123,6 +1128,7 @@ function newfun() {
         "&travelmode=driving";
 
       window.open(d, "_blank");
+      res = "No path found in database, using best suggested by Google.";
     } else {
       const d =
         "https://www.google.com/maps/dir/?api=1&origin=" +
@@ -1130,6 +1136,7 @@ function newfun() {
         "&destination=" +
         b +
         "&travelmode=walking";
+      res = "No path found in database, using best suggested by Google.";
       window.open(d, "_blank");
     }
   }
@@ -1148,4 +1155,44 @@ function changeG() {
   } else {
     g = 1;
   }
+}
+var select = document.getElementById("selectfrom");
+var checkflag = 0;
+for (var i = 0; i < c.length; i++) {
+  var opt = c[i][0];
+  var el = document.createElement("option");
+  el.text = opt;
+  el.value = opt;
+  checkflag = i;
+  select.add(el);
+}
+var select2 = document.getElementById("selectto");
+// if (a === "") {
+for (var i = 0; i < c.length; i++) {
+  var opt = c[i][1];
+  var el = document.createElement("option");
+  el.text = opt;
+  el.value = opt;
+  select2.add(el);
+}
+// }
+// else {
+//   var opt = c[checkflag][1];
+//   var el = document.createElement("option");
+//   el.text = opt;
+//   el.value = opt;
+//   select2.add(el);
+// }
+
+function changeFrom() {
+  var x = document.getElementById("selectfrom").value;
+  document.getElementById("from").value = x;
+}
+function changeTo() {
+  var x = document.getElementById("selectto").value;
+  document.getElementById("to").value = x;
+}
+function displayprompt() {
+  document.getElementById("result").innerHTML = res;
+  console.log(res);
 }
