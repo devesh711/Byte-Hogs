@@ -14,9 +14,26 @@
   </head>
   <body>
     <div class="main">
-      <nav>
-        <button></button>
-      </nav>
+      <div class="nav">
+        <div class="navleft"><img src="logo.png" /> Safest Path</div>
+        <button>Contact Us</button>
+      </div>
+      <div class="toggles" onclick="changeeE()">
+        <div class="switches">
+          <p>Walk</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="switches">
+          <p>Unsafe</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
       <div class="mainbody">
         <div class="loginbox">
           <div class="logintop">
@@ -30,10 +47,11 @@
               <label for="to">Destination</label>
               <input type="text" id="to" />
             </form>
+            <button onclick="newfun()" class="search">Search</button>
           </div>
         </div>
       </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
